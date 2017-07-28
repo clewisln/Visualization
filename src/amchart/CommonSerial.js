@@ -403,7 +403,7 @@
                     break;
             }
 
-            this._chart.valueAxes[i].labelFunction = function(axis, formatter) {
+            this._chart.valueAxes[i].labelFunction = (function(axis, formatter) {
                 return function(v1, v2, v3) {
                     switch (axis.axisType()) {
                         case "time":
@@ -411,8 +411,8 @@
                         default:
                             return formatter(v1);
                     }
-                }
-            }(yAxis, valueFormatter);
+                };
+            })(yAxis, valueFormatter);
         }
 
         if (this.showScrollbar()) {
